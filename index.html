@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1" />
+<title>まなびクエスト | 学ぶともちが育つ</title>
+<meta name="description" content="勉強するとキャラクターが育つ、学習RPG「まなびクエスト」" />
+<meta name="theme-color" content="#fff3e6" />
+<link rel="manifest" href="manifest.json" />
+<link rel="apple-touch-icon" href="icons/icon-192.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ============ ホーム画面 ============ -->
+  <section id="screen-home" class="screen is-active">
+    <header class="home-header">
+      <p class="app-title">まなびクエスト</p>
+      <p class="app-subtitle">学ぶと、もちが育つ。</p>
+    </header>
+
+    <div class="character-stage">
+      <div id="home-character" class="character-wrap"></div>
+      <p id="home-next-milestone" class="next-milestone"></p>
+    </div>
+
+    <div class="glass-card level-card">
+      <div class="level-row">
+        <span class="level-badge">Lv. <span id="home-level">1</span></span>
+        <span class="power-badge">⚡ Power <span id="home-power">0</span></span>
+      </div>
+      <div class="exp-bar-track">
+        <div id="home-exp-bar-fill" class="exp-bar-fill"></div>
+      </div>
+      <p id="home-exp-label" class="exp-label">0 / 0 EXP</p>
+    </div>
+
+    <div class="stat-grid">
+      <div class="glass-card stat-tile">
+        <p class="stat-value" id="home-streak">0 日</p>
+        <p class="stat-label">連続学習</p>
+      </div>
+      <div class="glass-card stat-tile">
+        <p class="stat-value" id="home-total-correct">0</p>
+        <p class="stat-label">総正解数</p>
+      </div>
+      <div class="glass-card stat-tile">
+        <p class="stat-value" id="home-accuracy">0%</p>
+        <p class="stat-label">正答率</p>
+      </div>
+    </div>
+
+    <button id="start-quiz-btn" class="cta-button">学習スタート</button>
+
+    <div class="home-links">
+      <button id="home-result-btn" class="ghost-button">📊 成績</button>
+      <button id="home-badges-btn" class="ghost-button">🏅 バッジ</button>
+    </div>
+  </section>
+
+  <!-- ============ 学習画面 ============ -->
+  <section id="screen-quiz" class="screen">
+    <header class="quiz-header">
+      <button id="quiz-home-btn" class="icon-button" aria-label="ホームへ戻る">←</button>
+      <span id="quiz-combo" class="combo-badge">コンボ 0</span>
+    </header>
+
+    <div id="quiz-character" class="character-wrap character-wrap-small"></div>
+
+    <div class="glass-card question-card">
+      <p id="quiz-question" class="question-text">問題を読み込み中...</p>
+    </div>
+
+    <form id="quiz-form" class="answer-form">
+      <input
+        id="quiz-input"
+        class="answer-input"
+        type="text"
+        inputmode="text"
+        autocomplete="off"
+        autocapitalize="off"
+        spellcheck="false"
+        placeholder="こたえを入力してね"
+      />
+      <p id="quiz-feedback" class="quiz-feedback"></p>
+      <button id="quiz-answer-btn" type="submit" class="cta-button">答える</button>
+    </form>
+  </section>
+
+  <!-- ============ 成績画面 ============ -->
+  <section id="screen-result" class="screen">
+    <header class="sub-header">
+      <button id="result-home-btn" class="icon-button" aria-label="ホームへ戻る">←</button>
+      <h2>成績</h2>
+    </header>
+
+    <div class="result-grid">
+      <div class="glass-card result-tile"><p class="result-value" id="result-level">1</p><p class="result-label">レベル</p></div>
+      <div class="glass-card result-tile"><p class="result-value" id="result-power">0</p><p class="result-label">総Power</p></div>
+      <div class="glass-card result-tile"><p class="result-value" id="result-total-correct">0</p><p class="result-label">総正解数</p></div>
+      <div class="glass-card result-tile"><p class="result-value" id="result-total-answered">0</p><p class="result-label">総問題数</p></div>
+      <div class="glass-card result-tile"><p class="result-value" id="result-accuracy">0%</p><p class="result-label">正答率</p></div>
+      <div class="glass-card result-tile"><p class="result-value" id="result-current-streak">0</p><p class="result-label">連続正解</p></div>
+      <div class="glass-card result-tile"><p class="result-value" id="result-best-streak">0</p><p class="result-label">最高コンボ</p></div>
+      <div class="glass-card result-tile"><p class="result-value" id="result-study-time">0分</p><p class="result-label">総学習時間</p></div>
+    </div>
+  </section>
+
+  <!-- ============ バッジ画面 ============ -->
+  <section id="screen-badges" class="screen">
+    <header class="sub-header">
+      <button id="badges-home-btn" class="icon-button" aria-label="ホームへ戻る">←</button>
+      <h2>バッジ</h2>
+    </header>
+    <div id="badges-grid" class="badges-grid"></div>
+  </section>
+
+  <!-- ============ 演出オーバーレイ ============ -->
+  <div id="correct-overlay" class="correct-overlay">
+    <span class="correct-overlay-sparkles">✨✨✨</span>
+    <span class="correct-overlay-text">正解！</span>
+  </div>
+  <div id="confetti-layer" class="confetti-layer"></div>
+  <div id="levelup-toast" class="toast levelup-toast"></div>
+  <div id="badge-toast" class="toast badge-toast"></div>
+
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/answerChecker.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/character.js"></script>
+<script src="js/badges.js"></script>
+<script src="js/app.js"></script>
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch(() => {
+        /* オフライン対応は任意機能のため、失敗しても無視する */
+      });
+    });
+  }
+</script>
+</body>
+</html>
