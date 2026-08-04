@@ -51,53 +51,79 @@ const Character = (() => {
 
         <!-- 羽 -->
         <g class="part-wings part-optional">
-          <path d="M45 100 Q10 80 15 130 Q35 125 45 115 Z" class="stroke-line wing" />
-          <path d="M155 100 Q190 80 185 130 Q165 125 155 115 Z" class="stroke-line wing" />
+          <path d="M32 108 Q -8 88 -3 138 Q22 132 34 122 Z" class="stroke-line wing" />
+          <path d="M168 108 Q208 88 203 138 Q178 132 166 122 Z" class="stroke-line wing" />
         </g>
 
         <!-- しっぽ -->
         <g class="part-tail part-optional">
-          <path d="M150 150 Q178 150 172 128 Q166 142 150 140 Z" class="stroke-line" />
+          <path d="M158 152 Q186 150 180 128 Q173 143 156 142 Z" class="stroke-line" />
         </g>
 
         <!-- マント -->
         <g class="part-cape part-optional">
-          <path d="M62 95 Q100 130 138 95 L150 165 Q100 185 50 165 Z" class="cape-fill stroke-line" />
+          <path d="M55 100 Q100 132 145 100 L158 168 Q100 188 42 168 Z" class="cape-fill stroke-line" />
         </g>
 
-        <!-- 本体（もち） -->
-        <ellipse cx="100" cy="115" rx="62" ry="58" class="mochi-body stroke-line" />
+        <!-- 本体（もち・添付スケッチのゆるい輪郭を再現） -->
+        <path class="mochi-body stroke-line" d="
+          M 62 62
+          C 50 50, 34 46, 27 54
+          C 22 60, 26 66, 34 64
+          C 40 63, 44 66, 40 72
+          C 20 82, 12 105, 13 130
+          C 14 155, 22 168, 40 174
+          C 65 180, 135 180, 160 174
+          C 178 168, 186 155, 187 130
+          C 188 105, 180 82, 160 72
+          C 156 66, 160 63, 166 64
+          C 174 66, 178 60, 173 54
+          C 166 46, 150 50, 138 62
+          C 128 70, 72 70, 62 62
+          Z" />
 
-        <!-- 耳 -->
+        <!-- お腹の窓もよう（土台の目印として常時表示） -->
+        <g class="belly-window">
+          <path d="M70 178 L70 144 Q70 112 100 112 Q130 112 130 144 L130 178" class="stroke-line thin no-fill" />
+          <rect x="141" y="148" width="7" height="4" rx="2" class="belly-dot" />
+          <rect x="141" y="160" width="7" height="4" rx="2" class="belly-dot" />
+        </g>
+
+        <!-- 耳とひげ（Lv5でぐっと立ち上がる） -->
         <g class="part-ears part-optional">
-          <ellipse cx="70" cy="58" rx="14" ry="20" class="stroke-line ear" transform="rotate(-15 70 58)" />
-          <ellipse cx="130" cy="58" rx="14" ry="20" class="stroke-line ear" transform="rotate(15 130 58)" />
+          <path d="M33 52 Q18 20 42 12 Q58 8 52 40" class="stroke-line thin no-fill" />
+          <path d="M167 52 Q182 20 158 12 Q142 8 148 40" class="stroke-line thin no-fill" />
+          <path d="M18 100 L-4 96" class="stroke-line thin" />
+          <path d="M20 110 L-2 110" class="stroke-line thin" />
+          <path d="M182 100 L204 96" class="stroke-line thin" />
+          <path d="M180 110 L202 110" class="stroke-line thin" />
         </g>
 
         <!-- 顔 -->
         <g class="face">
-          <circle cx="80" cy="112" r="4.5" class="eye" />
-          <circle cx="120" cy="112" r="4.5" class="eye" />
-          <path d="M88 128 Q100 136 112 128" class="mouth" />
+          <path d="M78 88 Q100 82 122 88" class="stroke-line thin eyebrow" />
+          <rect x="82" y="100" width="4" height="10" rx="2" class="eye" />
+          <rect x="114" y="100" width="4" height="10" rx="2" class="eye" />
+          <path d="M88 122 L100 132 L106 124 L112 132" class="mouth" />
           <g class="part-cheeks part-optional">
-            <ellipse cx="66" cy="122" rx="7" ry="4.5" class="cheek" />
-            <ellipse cx="134" cy="122" rx="7" ry="4.5" class="cheek" />
+            <ellipse cx="68" cy="116" rx="7" ry="4.5" class="cheek" />
+            <ellipse cx="132" cy="116" rx="7" ry="4.5" class="cheek" />
           </g>
         </g>
 
         <!-- 王冠 -->
         <g class="part-crown part-optional">
-          <path d="M74 62 L82 42 L94 58 L100 40 L106 58 L118 42 L126 62 Z" class="crown-fill stroke-line" />
+          <path d="M76 46 L83 28 L94 42 L100 24 L106 42 L117 28 L124 46 Z" class="crown-fill stroke-line" />
         </g>
 
         <!-- リュック（背中側、控えめに横から見える形） -->
         <g class="part-backpack part-optional">
-          <rect x="140" y="98" width="22" height="30" rx="6" class="backpack-fill stroke-line" />
+          <rect x="155" y="98" width="24" height="32" rx="7" class="backpack-fill stroke-line" />
         </g>
 
         <!-- 本（左下でかかえる） -->
         <g class="part-book part-optional">
-          <g transform="translate(38 152) rotate(-10)">
+          <g transform="translate(32 154) rotate(-10)">
             <rect x="0" y="0" width="26" height="19" rx="2" class="item-fill stroke-line" />
             <line x1="13" y1="2" x2="13" y2="17" class="stroke-line thin" />
           </g>
@@ -105,18 +131,20 @@ const Character = (() => {
 
         <!-- 鉛筆（右下でにぎる） -->
         <g class="part-pencil part-optional">
-          <g transform="translate(152 150) rotate(28)">
+          <g transform="translate(160 152) rotate(28)">
             <rect x="0" y="0" width="7" height="28" rx="2" class="item-fill stroke-line" />
             <path d="M0 28 L3.5 36 L7 28 Z" class="item-fill stroke-line" />
           </g>
         </g>
 
-        <!-- 地球儀（足もとに置く） -->
+        <!-- 地球儀（軌道の輪といっしょに掲げ持つ） -->
         <g class="part-globe part-optional">
-          <g transform="translate(100 183)">
-            <circle cx="0" cy="0" r="11" class="item-fill stroke-line" />
-            <ellipse cx="0" cy="0" rx="11" ry="4.5" class="stroke-line thin no-fill" />
-            <line x1="-11" y1="0" x2="11" y2="0" class="stroke-line thin" />
+          <path d="M178 108 Q192 96 190 82" class="stroke-line thin no-fill" />
+          <g transform="translate(190 74)">
+            <ellipse cx="0" cy="0" rx="21" ry="9" class="stroke-line thin no-fill" transform="rotate(-18)" />
+            <circle cx="0" cy="0" r="13" class="item-fill stroke-line" />
+            <path d="M-6 -9 Q0 -4 -3 2 Q-6 6 0 9" class="stroke-line thin no-fill" />
+            <path d="M6 -8 Q9 -2 4 4" class="stroke-line thin no-fill" />
           </g>
         </g>
       </svg>
