@@ -82,13 +82,6 @@ const Character = (() => {
           C 128 70, 72 70, 62 62
           Z" />
 
-        <!-- お腹の窓もよう（土台の目印として常時表示） -->
-        <g class="belly-window">
-          <path d="M70 178 L70 144 Q70 112 100 112 Q130 112 130 144 L130 178" class="stroke-line thin no-fill" />
-          <rect x="141" y="148" width="7" height="4" rx="2" class="belly-dot" />
-          <rect x="141" y="160" width="7" height="4" rx="2" class="belly-dot" />
-        </g>
-
         <!-- 耳とひげ（Lv5でぐっと立ち上がる） -->
         <g class="part-ears part-optional">
           <path d="M33 52 Q18 20 42 12 Q58 8 52 40" class="stroke-line thin no-fill" />
@@ -109,6 +102,13 @@ const Character = (() => {
             <ellipse cx="68" cy="116" rx="7" ry="4.5" class="cheek" />
             <ellipse cx="132" cy="116" rx="7" ry="4.5" class="cheek" />
           </g>
+        </g>
+
+        <!-- お腹の窓もよう（Lv20、ほっぺと同じタイミングで育つ目印） -->
+        <g class="part-cheeks part-optional">
+          <path d="M70 178 L70 144 Q70 112 100 112 Q130 112 130 144 L130 178" class="stroke-line thin no-fill" />
+          <rect x="141" y="148" width="7" height="4" rx="2" class="belly-dot" />
+          <rect x="141" y="160" width="7" height="4" rx="2" class="belly-dot" />
         </g>
 
         <!-- 王冠 -->
